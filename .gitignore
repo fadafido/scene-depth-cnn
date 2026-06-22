@@ -1,0 +1,20 @@
+# Dataset (download via Kaggle — see README)
+data/
+
+# tf.data disk cache
+.tfcache/
+
+# Trained model weights (too large for GitHub; regenerate by running the notebook)
+*.keras
+
+# Intermediate executed notebook (final is SceneDepth_CNN_Classification.ipynb)
+run_output.ipynb
+
+# Python / OS
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
+
+# Kaggle credentials — never commit
+kaggle.json

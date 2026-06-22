@@ -1,0 +1,16 @@
+# SceneDepth — local CPU environment (Apple M3 Pro, Python 3.13)
+tensorflow==2.21.0
+keras==3.14.1
+scikit-learn==1.6.1
+matplotlib==3.10.5
+seaborn==0.13.2
+pandas==2.3.1
+numpy
+pillow
+opencv-python
+kaggle==1.6.17          # classic CLI: reads ~/.kaggle/kaggle.json
+# notebook execution
+nbformat
+nbconvert
+papermill
+ipykernel

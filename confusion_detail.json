@@ -1,0 +1,164 @@
+{
+  "class_names": [
+    "buildings",
+    "forest",
+    "glacier",
+    "mountain",
+    "sea",
+    "street"
+  ],
+  "models": {
+    "Model 1": {
+      "test_acc": 0.793,
+      "top_confusions": [
+        [
+          "glacier",
+          "sea",
+          81
+        ],
+        [
+          "mountain",
+          "sea",
+          80
+        ],
+        [
+          "glacier",
+          "mountain",
+          78
+        ],
+        [
+          "street",
+          "buildings",
+          61
+        ],
+        [
+          "buildings",
+          "street",
+          42
+        ]
+      ],
+      "per_class_recall": {
+        "buildings": 0.86,
+        "forest": 0.966,
+        "glacier": 0.629,
+        "mountain": 0.71,
+        "sea": 0.796,
+        "street": 0.834
+      }
+    },
+    "Model 2": {
+      "test_acc": 0.7313,
+      "top_confusions": [
+        [
+          "glacier",
+          "sea",
+          190
+        ],
+        [
+          "mountain",
+          "sea",
+          151
+        ],
+        [
+          "glacier",
+          "mountain",
+          63
+        ],
+        [
+          "street",
+          "buildings",
+          55
+        ],
+        [
+          "buildings",
+          "street",
+          42
+        ]
+      ],
+      "per_class_recall": {
+        "buildings": 0.771,
+        "forest": 0.964,
+        "glacier": 0.439,
+        "mountain": 0.558,
+        "sea": 0.916,
+        "street": 0.792
+      }
+    },
+    "Model 3": {
+      "test_acc": 0.8273,
+      "top_confusions": [
+        [
+          "glacier",
+          "sea",
+          82
+        ],
+        [
+          "street",
+          "buildings",
+          80
+        ],
+        [
+          "mountain",
+          "sea",
+          66
+        ],
+        [
+          "glacier",
+          "mountain",
+          58
+        ],
+        [
+          "mountain",
+          "glacier",
+          44
+        ]
+      ],
+      "per_class_recall": {
+        "buildings": 0.886,
+        "forest": 0.947,
+        "glacier": 0.694,
+        "mountain": 0.766,
+        "sea": 0.898,
+        "street": 0.802
+      }
+    },
+    "Model 4": {
+      "test_acc": 0.9023,
+      "top_confusions": [
+        [
+          "glacier",
+          "mountain",
+          65
+        ],
+        [
+          "street",
+          "buildings",
+          65
+        ],
+        [
+          "mountain",
+          "glacier",
+          58
+        ],
+        [
+          "glacier",
+          "sea",
+          22
+        ],
+        [
+          "buildings",
+          "street",
+          16
+        ]
+      ],
+      "per_class_recall": {
+        "buildings": 0.959,
+        "forest": 0.989,
+        "glacier": 0.828,
+        "mountain": 0.855,
+        "sea": 0.939,
+        "street": 0.864
+      }
+    }
+  }
+}
