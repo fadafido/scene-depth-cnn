@@ -13,7 +13,7 @@ Four convolutional architectures of increasing depth are trained and evaluated o
 
 ## Dataset
 
-[Intel Image Classification](https://www.kaggle.com/datasets/puneet6060/intel-image-classification) — ~25k photos, 150×150 RGB, six classes: `buildings`, `forest`, `glacier`, `mountain`, `sea`, `street`.
+[Intel Image Classification](https://www.kaggle.com/datasets/puneet6060/intel-image-classification) — ~25,000 images in the Kaggle package; this study uses the **17,034 labelled images** (14,034 train/validation + 3,000 test) across six classes (`buildings`, `forest`, `glacier`, `mountain`, `sea`, `street`); the unlabelled prediction set is not used. All images 150×150 RGB.
 
 | Split | Images |
 |---|---|
@@ -34,6 +34,7 @@ Four convolutional architectures of increasing depth are trained and evaluated o
 ## Key findings
 
 - **Depth is not monotonically beneficial.** Model 2 (4 conv) scored ~6 points *below* the 2-conv Model 1, collapsing low-texture scenes into `sea` (190 glaciers + 151 mountains misread as sea).
+- **The depth ordering is seed-stable** (3 seeds: 42, 101, 202). Mean test accuracy — Model 1 **79.7% ± 1.4**, Model 2 **75.2% ± 1.8**, Model 3 **80.7% ± 2.6**. The `Model 2 < Model 1 < Model 3` ordering holds on the means, and the **Model 2 dip is robust** (its best seed, 76.5%, still sits below Model 1's worst, 78.5%). The Model 1 ↔ Model 3 margin, however, narrows to within one standard deviation — overlapping error bars mean the deep custom model's edge over the shallow baseline is *not* statistically separable here. See `extension_multiseed_stability.png`.
 - **The dip is a genuine training difficulty — not just the learning rate.** A control model (**Model 2b** = Model 2 + cosine LR) did **not** recover (72.7%, −0.4 pts), so Model 3's recovery owes to its added capacity and larger head, not the schedule.
 - **Regularisation, not size, controls generalisation.** An ablation (**Model 1-NoReg**, no augmentation/dropout) overfits hard — 98% train vs 75% val, a +0.27 train–val gap versus +0.05 for the regularised twin.
 - **Transfer learning wins on accuracy *and* efficiency.** MobileNetV2 is both the most accurate **and** the smallest model (2.6M params), clearing the ~83% custom-CNN ceiling. `glacier` — the hardest class throughout (F1 0.72 → 0.85 from Model 1 to Model 4) — improves most.
@@ -50,8 +51,9 @@ Four convolutional architectures of increasing depth are trained and evaluated o
 | `parse_histories.py` | Recover original per-epoch curves from the training log |
 | `merge_extensions.py` | Append executed extension cells without retraining Models 1–4 |
 | `smoke_test.py`, `analyze_confusion.py` | Pipeline smoke test; confusion-structure analysis |
-| `results_summary.json`, `confusion_detail.json`, `original_histories.json`, `ext_results.json` | Machine-readable metrics |
-| `*.png` | All figures — sample grid, training histories, confusion matrices, comparison, LR schedule, Grad-CAM (mistakes **and** correct), overfitting, per-class metrics, complexity |
+| `run_multiseed.py`, `make_multiseed_figure.py` | Multi-seed stability run (seeds 42/101/202, Models 1–3) + figure |
+| `results_summary.json`, `confusion_detail.json`, `original_histories.json`, `ext_results.json`, `multiseed_results.json` | Machine-readable metrics (incl. multi-seed stability) |
+| `*.png` | All figures — sample grid, training histories, confusion matrices, comparison, LR schedule, Grad-CAM (mistakes **and** correct), overfitting, per-class metrics, complexity, multi-seed stability |
 
 > Trained `*.keras` weights (up to ~174 MB) and the dataset are **not** committed — regenerate by running the notebook.
 
@@ -78,6 +80,7 @@ Appended as a clearly-marked section in the notebook; Models 1–4 are reloaded,
 - **C — Per-class precision/recall/F1** (`extension_per_class_metrics.png`): Model 1 vs Model 4.
 - **D — Grad-CAM on correct predictions** (`extension_gradcam_correct.png`): contrasts attention when right vs wrong.
 - **E — Complexity vs accuracy** (`extension_complexity_vs_accuracy.png`): the parameter-efficiency trade-off.
+- **F — Multi-seed stability** (`extension_multiseed_stability.png`): Models 1–3 over seeds 42/101/202, mean ± s.d., confirming the depth ordering is not a single-seed artefact.
 - Plus the required-extension trio: Grad-CAM on misclassifications, two-stage MobileNetV2 fine-tuning, and cosine-decay LR schedule analysis.
 
 ### Notes & deviations

@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "seeds": [
+      42,
+      101,
+      202
+    ],
+    "primary_seed": 42,
+    "models": [
+      "Model 1",
+      "Model 2",
+      "Model 3"
+    ],
+    "std": "sample std (ddof=1)",
+    "test_set": "fixed 3,000 held-out images",
+    "note": "seed 42 reused from results_summary.json; seeds 101/202 trained fresh; train/val split varies with seed, test set fixed"
+  },
+  "Model 1": {
+    "seeds": {
+      "42": {
+        "test_acc": 0.793,
+        "f1": 0.7947,
+        "source": "reused_seed42",
+        "reeval_check": {
+          "test_acc": 0.793,
+          "f1": 0.7947
+        }
+      },
+      "101": {
+        "test_acc": 0.7847,
+        "f1": 0.7829,
+        "epochs_trained": 12
+      },
+      "202": {
+        "test_acc": 0.8117,
+        "f1": 0.8121,
+        "epochs_trained": 19
+      }
+    },
+    "n_seeds": 3,
+    "test_acc_mean": 0.7965,
+    "test_acc_std": 0.0138,
+    "f1_mean": 0.7966,
+    "f1_std": 0.0147
+  },
+  "Model 2": {
+    "seeds": {
+      "42": {
+        "test_acc": 0.7313,
+        "f1": 0.7289,
+        "source": "reused_seed42",
+        "reeval_check": {
+          "test_acc": 0.7313,
+          "f1": 0.7289
+        }
+      },
+      "101": {
+        "test_acc": 0.7653,
+        "f1": 0.7627,
+        "epochs_trained": 17
+      },
+      "202": {
+        "test_acc": 0.76,
+        "f1": 0.7612,
+        "epochs_trained": 14
+      }
+    },
+    "n_seeds": 3,
+    "test_acc_mean": 0.7522,
+    "test_acc_std": 0.0183,
+    "f1_mean": 0.7509,
+    "f1_std": 0.0191
+  },
+  "Model 3": {
+    "seeds": {
+      "42": {
+        "test_acc": 0.8273,
+        "f1": 0.8292,
+        "source": "reused_seed42",
+        "reeval_check": {
+          "test_acc": 0.8273,
+          "f1": 0.8292
+        }
+      },
+      "101": {
+        "test_acc": 0.7783,
+        "f1": 0.7783,
+        "epochs_trained": 16
+      },
+      "202": {
+        "test_acc": 0.8167,
+        "f1": 0.8171,
+        "epochs_trained": 24
+      }
+    },
+    "n_seeds": 3,
+    "test_acc_mean": 0.8074,
+    "test_acc_std": 0.0258,
+    "f1_mean": 0.8082,
+    "f1_std": 0.0266
+  }
+}
