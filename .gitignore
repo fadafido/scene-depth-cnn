@@ -2,7 +2,12 @@
 data/
 
 # tf.data disk cache
-.tfcache/
+.tfcache*/
+
+# Extensions intermediate artefacts (final analysis is merged into the main notebook)
+extensions.ipynb
+extensions_out.ipynb
+_train_log.txt
 
 # Trained model weights (too large for GitHub; regenerate by running the notebook)
 *.keras
