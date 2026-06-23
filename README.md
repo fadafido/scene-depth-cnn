@@ -69,7 +69,7 @@ mkdir -p ~/.kaggle && mv ~/Downloads/kaggle.json ~/.kaggle/ && chmod 600 ~/.kagg
 jupyter notebook SceneDepth_CNN_Classification.ipynb
 ```
 
-Seed **42** is fixed across NumPy / TensorFlow / Python `random` / `PYTHONHASHSEED`. Trained locally on an **Apple M3 Pro, CPU-only** (~1h40m for the four models, ~30 min for the extension diagnostics).
+Seed **42** is fixed across NumPy / TensorFlow / Python `random` / `PYTHONHASHSEED`. Trained locally on an **Apple M3 Pro, CPU-only** (~1h40m for the four models, ~30 min for the extension diagnostics). The multi-seed stability extension additionally trains Models 1–3 with seeds 101 and 202.
 
 ## Extensions (extra-mile analysis)
 
@@ -80,7 +80,7 @@ Appended as a clearly-marked section in the notebook; Models 1–4 are reloaded,
 - **C — Per-class precision/recall/F1** (`extension_per_class_metrics.png`): Model 1 vs Model 4.
 - **D — Grad-CAM on correct predictions** (`extension_gradcam_correct.png`): contrasts attention when right vs wrong.
 - **E — Complexity vs accuracy** (`extension_complexity_vs_accuracy.png`): the parameter-efficiency trade-off.
-- **F — Multi-seed stability** (`extension_multiseed_stability.png`): Models 1–3 over seeds 42/101/202, mean ± s.d., confirming the depth ordering is not a single-seed artefact.
+- **F — Multi-seed stability** (`extension_multiseed_stability.png`): Models 1–3 over seeds 42/101/202, mean ± s.d., confirming the Model 2 dip is not a single-seed artefact, while showing Model 3's edge over Model 1 is not statistically stable.
 - Plus the required-extension trio: Grad-CAM on misclassifications, two-stage MobileNetV2 fine-tuning, and cosine-decay LR schedule analysis.
 
 ### Notes & deviations
